@@ -1,0 +1,25 @@
+{% extends "base.html" %} 
+
+{% block title %}Log-in{% endblock %}
+
+{% block content %}
+<div class="container"></div>
+    <div class="row justify-content-center mt-5 ">
+        <div class="col-lg-4 col-md-4">
+            <div class="card bx">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h1>Ingreso</h1>
+                        <p>Por favor, rellene los siguientes campos para ingresar:</p>
+                    </div>
+                    <form method="post">
+                        {{ form.as_p }}
+                        {% csrf_token %}
+                        <p><input type="submit" value="Ingresar" class="btn btn-success"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  
+{% endblock %}
