@@ -24,9 +24,20 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
           <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Registros</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Registros
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">Ordenar</a></li>
+                <li><a class="dropdown-item" href="#">Actualizar</a></li>
+              </ul>
             </li>
+
+
+
+
+
             <li class="nav-item">
               <a class="nav-link" href="#">Informes</a>
             </li>
@@ -52,6 +63,35 @@
     {% block content %}
     {% endblock %}
     </div>
+
+
+<!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <form method="post">
+              {% csrf_token %}
+              {{ form_orden.as_p}}
+              <p><input type="submit" value="Procesar" class="btn btn-success"></p>
+            </form>
+
+            Aca es donde iria la forma de django
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
 
     <!-- Optional JavaScript; choose one of the two! -->
 
