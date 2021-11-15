@@ -1,0 +1,8 @@
+Superuser:
+machina
+123456
+
+
+otro usuario:
+emmanuel
+123lalala
