@@ -3,19 +3,12 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from .forms import LoginForm, OrdenarForm
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def base(request):
-    if request.method == 'GET':
-        if request.user.is_authenticated:
-            return render(request, 'base.html')
-        else:    
-            form = LoginForm()
-            form_orden = OrdenarForm()
-            return render(request, 'cuentas/login.html', {'form': form,
-            'form_orden':form_orden})
-    else:
-        valor = user_login(request)
-        return valor
+    return render(request, 'base.html')
+
 
 
 def user_login(request):
