@@ -31,13 +31,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cuentas.apps.CuentasConfig',
+    'django.contrib.admin',
 ]
 
 MIDDLEWARE = [
@@ -125,6 +126,9 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+#AUTH_USER_MODEL = 'cuentas.CustomUserModel'
+
 LOGIN_REDIRECT_URL = 'base'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
+
