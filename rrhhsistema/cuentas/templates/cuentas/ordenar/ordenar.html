@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Ordenar{% endblock %}
+
+{% block content %}
+  <h1>Ingrese los datos para poder procesar el txt</h1>
+  <form method="post" enctype="multipart/form-data">
+    {{ ordenar_form.as_p }}
+    {% csrf_token %}
+    <p><input type="submit" value="Create my account"></p>
+  </form>
+{% endblock %}

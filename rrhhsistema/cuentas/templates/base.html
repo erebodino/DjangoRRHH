@@ -38,7 +38,8 @@
                 Registros
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">Ordenar</a></li>
+                <!---<li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">Ordenar</a></li>--->
+                <li><a class="dropdown-item" href="{% url 'ordenar' %}">Ordenar</a></li>
                 <li><a class="dropdown-item" href="#">Actualizar</a></li>
               </ul>
             </li>
@@ -82,7 +83,16 @@
 
             <form method="post">
               {% csrf_token %}
-              {{ form_orden.as_p}}
+              <!-- {{ form_orden.as_p}} ---> 
+              {% for field in form_orden.visible_fields %}
+              <div class="form-group">
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.help_text %}
+                  <small class="form-text text-muted">{{ field.help_text }}</small>
+                {% endif %}
+              </div>
+              {% endfor %}
               <p><input type="submit" value="Procesar" class="btn btn-success"></p>
             </form>
 

@@ -5,10 +5,29 @@ from django.contrib.auth import authenticate, login
 from .forms import LoginForm, OrdenarForm, ProfileForm, UserRegistrationForm 
 from .models import Profile
 from django.contrib.auth.decorators import login_required
+from .auxiliares import file_subido
 
 @login_required
 def base(request):
     return render(request, 'base.html')
+
+
+@login_required
+def ordenar(request):
+    if request.method == 'POST':
+        ordenar_form = OrdenarForm(request.POST,request.FILES)
+
+        if ordenar_form.is_valid():
+            frame = file_subido(request.FILES['archivo'])
+            frame = frame.to_html()
+            return HttpResponse(frame)
+            # return render(request,
+            #               'cuentas/ordenar/ordenar_done.html',{'frame':frame})
+    else:
+        ordenar_form = OrdenarForm()
+    return render(request,
+                  'cuentas/ordenar/ordenar.html',
+                  {'ordenar_form': ordenar_form})
 
 
 
@@ -65,6 +84,7 @@ def creacion_usuario(request):
                     'account/register.html',
                     {'user_form': user_form})
 
+@login_required
 def register(request):
     if request.method == 'POST':
         print('='*30)
